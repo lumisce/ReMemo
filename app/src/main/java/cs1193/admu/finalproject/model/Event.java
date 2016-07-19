@@ -1,5 +1,7 @@
 package cs1193.admu.finalproject.model;
 
+import java.sql.Time;
+import java.util.Calendar;
 import java.util.Date;
 
 import io.realm.RealmList;
@@ -14,7 +16,7 @@ public class Event extends RealmObject {
     private String id;
     private String title, location, comment;
     private User user;
-    private EventDate date;
+    private Date startDate, endDate;
     private RealmList<Tag> tags;
 
     public Event() {
@@ -60,12 +62,20 @@ public class Event extends RealmObject {
         this.user = user;
     }
 
-    public EventDate getDate() {
-        return date;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public void setDate(EventDate date) {
-        this.date = date;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
     public RealmList<Tag> getTags() {

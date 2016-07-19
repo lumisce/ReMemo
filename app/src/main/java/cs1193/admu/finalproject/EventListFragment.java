@@ -8,6 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import java.util.Date;
+import java.util.UUID;
+
 import cs1193.admu.finalproject.model.Event;
 import cs1193.admu.finalproject.model.Memo;
 import io.realm.OrderedRealmCollection;
@@ -28,6 +31,12 @@ public class EventListFragment extends ListFragment {
         super.onCreate(savedInstanceState);
         Realm realm = Realm.getDefaultInstance();
         // TODO: 7/16/16 where event is by user
+//        realm.beginTransaction();
+//        Event e = realm.createObject(Event.class, UUID.randomUUID().toString());
+//        e.setTitle("New Event");
+//        e.setLocation("Quezon City");
+//        e.setStartDate(new Date());;
+        realm.commitTransaction();
         events = realm.where(Event.class)
                 .findAll();
     }
@@ -38,6 +47,7 @@ public class EventListFragment extends ListFragment {
         // TODO: 7/16/16 start new Activity? ask acti to call new act
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
@@ -45,6 +55,7 @@ public class EventListFragment extends ListFragment {
         if (view instanceof ListView) {
             Context context = view.getContext();
             ListView listView = (ListView) view;
+//            listView.setOnLongClickListener();
             listView.setAdapter(new EventListAdapter(context, events));
         }
         return view;
