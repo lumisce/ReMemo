@@ -9,4 +9,168 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="cs1193.admu.finalproject.EventInputActivity">
 
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Images"
+        android:id="@+id/btn_event_image"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tags"
+        android:id="@+id/btn_event_tags"
+        android:layout_alignBottom="@+id/btn_event_image"
+        android:layout_toEndOf="@+id/btn_event_image" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Title:"
+        android:id="@+id/lbl_event_title"
+        android:layout_alignBaseline="@+id/et_event_title"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_event_title"
+        android:layout_below="@+id/btn_event_image"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/lbl_event_title" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:id="@+id/et_event_date"
+        android:layout_below="@+id/et_event_title"
+        android:layout_toStartOf="@+id/btn_event_date"
+        android:layout_toEndOf="@+id/lbl_event_date" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Date:"
+        android:id="@+id/lbl_event_date"
+        android:layout_alignBaseline="@+id/et_event_date"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pick"
+        android:id="@+id/btn_event_date"
+        android:layout_below="@+id/lbl_event_title"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pick"
+        android:id="@+id/btn_event_time_from"
+        android:layout_below="@+id/et_event_date"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="time"
+        android:id="@+id/et_event_time"
+        android:layout_alignBottom="@+id/btn_event_time_to"
+        android:layout_toEndOf="@+id/lbl_event_time"
+        android:layout_toStartOf="@id/btn_event_time_from"
+        android:hint="from"
+        android:gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Time:"
+        android:id="@+id/lbl_event_time"
+        android:layout_alignBaseline="@id/et_event_time"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pick"
+        android:id="@+id/btn_event_time_to"
+        android:layout_below="@+id/et_event_date"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="time"
+        android:id="@+id/et_event_time_to"
+        android:layout_alignTop="@+id/et_event_time"
+        android:layout_toStartOf="@+id/btn_event_time_to"
+        android:layout_toEndOf="@+id/btn_event_time_from"
+        android:gravity="center_horizontal"
+        android:hint="to" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Location:"
+        android:id="@+id/lbl_event_location"
+        android:layout_alignBaseline="@+id/editText"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:layout_alignBottom="@+id/btn_event_location"
+        android:layout_alignEnd="@+id/et_event_time_to"
+        android:layout_toEndOf="@+id/lbl_event_location" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pick"
+        android:id="@+id/btn_event_location"
+        android:layout_below="@+id/et_event_time_to"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Comment:"
+        android:id="@+id/lbl_event_comment"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/editText" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:inputType="textMultiLine"
+        android:id="@+id/editText2"
+        android:layout_below="@+id/lbl_event_comment"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/btn_event_location"
+        android:gravity="top|start" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create Event"
+        android:id="@+id/btn_event_create"
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/editText2" />
+
 </RelativeLayout>

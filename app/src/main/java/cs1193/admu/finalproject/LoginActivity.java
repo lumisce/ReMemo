@@ -28,7 +28,6 @@ public class LoginActivity extends AppCompatActivity {
 
         tb = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(tb);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         un = (EditText) findViewById(R.id.username);
         pw = (EditText) findViewById(R.id.password);
