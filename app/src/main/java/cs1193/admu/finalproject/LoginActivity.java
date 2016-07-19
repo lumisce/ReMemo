@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
         User u = realm.where(User.class)
                 .equalTo("email", login_email)
                 .findFirst();
-        if (u == null || u.getPassword().equals(login_pw)) {
+        if (u == null || !u.getPassword().equals(login_pw)) {
             Toast.makeText(this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
             return;
         }
