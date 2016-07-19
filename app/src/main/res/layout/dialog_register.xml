@@ -76,33 +76,6 @@
             android:layout_below="@+id/lbl_reg_password"
             android:layout_alignParentStart="true"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/lbl_reg_birthday"
-            android:layout_below="@+id/et_reg_password"
-            android:layout_alignParentStart="true"
-            android:text="@string/birthday_txt" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="date"
-            android:id="@+id/et_reg_bday"
-            android:layout_below="@+id/lbl_reg_birthday"
-            android:layout_alignParentStart="true"
-            android:layout_toStartOf="@+id/btn_bday"
-            android:hint="mm/dd/yyyy" />
-
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/pick_txt"
-            android:id="@+id/btn_bday"
-            android:layout_alignBottom="@+id/et_reg_bday"
-            android:layout_alignEnd="@+id/et_reg_password" />
-
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -110,8 +83,8 @@
             android:id="@+id/btn_ok"
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:layout_gravity="center_vertical"
-            android:layout_below="@+id/btn_bday"
-            android:layout_alignEnd="@+id/btn_bday" />
+            android:layout_below="@+id/et_reg_password"
+            android:layout_alignEnd="@+id/et_reg_password" />
 
         <Button
             android:layout_width="wrap_content"

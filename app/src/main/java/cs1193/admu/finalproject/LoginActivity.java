@@ -28,7 +28,6 @@ public class LoginActivity extends AppCompatActivity {
 
         tb = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(tb);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         un = (EditText) findViewById(R.id.username);
         pw = (EditText) findViewById(R.id.password);
@@ -62,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
         User u = realm.where(User.class)
                 .equalTo("email", login_email)
                 .findFirst();
-        if (u == null || u.getPassword().equals(login_pw)) {
+        if (u == null || !u.getPassword().equals(login_pw)) {
             Toast.makeText(this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
             return;
         }
