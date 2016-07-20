@@ -33,7 +33,7 @@ public class EventListAdapter extends RealmBaseAdapter<Event> implements ListAda
         title.setText(events.get(position).getTitle());
         date.setText(events.get(position).getDate()+"");
         location.setText(events.get(position).getLocation());
-
+        v.setTag(events.get(position).getId());
         return v;
     }
 }

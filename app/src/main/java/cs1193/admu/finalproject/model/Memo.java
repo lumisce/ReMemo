@@ -14,7 +14,7 @@ public class Memo extends RealmObject {
     private String id;
     private String title, content;
     private User user;
-    private Date createdAt, updatedAt;
+    private Date date;
     private RealmList<Tag> tags;
     private RealmList<Image> images;
 
@@ -37,20 +37,12 @@ public class Memo extends RealmObject {
         this.content = content;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
+    public Date getDate() {
+        return date;
     }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public String getId() {

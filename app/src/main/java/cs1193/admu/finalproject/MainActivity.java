@@ -67,18 +67,16 @@ public class MainActivity extends AppCompatActivity  implements MemoListFragment
                         public void onClick(View v) {
                             switch (position) {
                                 case 0:
-                                    Intent i = new Intent(getApplicationContext(), EventInputActivity.class);
-                                    startActivity(i);
+                                    newEvent(v);
                                     break;
                                 case 1:
-                                    i = new Intent(getApplicationContext(), MemoInputActivity.class);
-                                    startActivity(i);
+                                    newMemo(v);
                                     break;
                             }
                         }
                     });
-                    }
                 }
+            }
 
             @Override
             public void onPageScrollStateChanged(int state) {
@@ -165,11 +163,20 @@ public class MainActivity extends AppCompatActivity  implements MemoListFragment
 
     }
 
-    public void newEvent(View v){
+    public void newEvent(View v) {
 
-        Intent i = new Intent(this,cs1193.admu.finalproject.EventInputActivity.class);
+        Intent i = new Intent(this, EventInputActivity.class);
         i.putExtra(MainActivity.INPUTTYPE,0);
-        i.putExtra(MainActivity.USERID,getIntent().getStringExtra(MainActivity.USERID));
+        i.putExtra(MainActivity.USERID, getIntent().getStringExtra(MainActivity.USERID));
+        startActivity(i);
+
+    }
+
+    public void newMemo(View v) {
+
+        Intent i = new Intent(this, MemoInputActivity.class);
+        i.putExtra(MainActivity.INPUTTYPE,0);
+        i.putExtra(MainActivity.USERID, getIntent().getStringExtra(MainActivity.USERID));
         startActivity(i);
 
     }

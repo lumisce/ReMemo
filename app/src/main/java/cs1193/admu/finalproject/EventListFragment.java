@@ -1,6 +1,7 @@
 package cs1193.admu.finalproject;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
@@ -31,12 +32,12 @@ public class EventListFragment extends ListFragment {
         super.onCreate(savedInstanceState);
         Realm realm = Realm.getDefaultInstance();
         // TODO: 7/16/16 where event is by user
-//        realm.beginTransaction();
-//        Event e = realm.createObject(Event.class, UUID.randomUUID().toString());
-//        e.setTitle("New Event");
-//        e.setLocation("Quezon City");
-//        e.setStartDate(new Date());;
-//        realm.commitTransaction();
+        realm.beginTransaction();
+        Event e = realm.createObject(Event.class, UUID.randomUUID().toString());
+        e.setTitle("New Event");
+        e.setLocation("Quezon City");
+        e.setDate(new Date());;
+        realm.commitTransaction();
         events = realm.where(Event.class)
                 .findAll();
     }
@@ -45,6 +46,9 @@ public class EventListFragment extends ListFragment {
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
         // TODO: 7/16/16 start new Activity? ask acti to call new act
+        Intent i = new Intent(getActivity(), EventViewActivity.class);
+        i.putExtra("EVENT_ID", (String) v.getTag());
+        startActivity(i);
     }
 
 
