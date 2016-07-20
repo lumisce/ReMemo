@@ -31,7 +31,7 @@ public class EventListAdapter extends RealmBaseAdapter<Event> implements ListAda
         TextView location = (TextView) v.findViewById(R.id.event_location);
 
         title.setText(events.get(position).getTitle());
-        date.setText(events.get(position).getStartDate()+"");
+        date.setText(events.get(position).getDate()+"");
         location.setText(events.get(position).getLocation());
 
         return v;

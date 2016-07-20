@@ -72,8 +72,10 @@ public class LoginActivity extends AppCompatActivity {
         e.putBoolean("login", true);
         e.apply();
 
-        realm.close();
         Intent i = new Intent(this, MainActivity.class);
+        i.putExtra(MainActivity.USERID,u.getId());
+        realm.close();
+
         startActivity(i);
     }
 

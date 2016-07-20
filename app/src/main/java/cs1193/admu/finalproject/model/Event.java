@@ -15,9 +15,34 @@ public class Event extends RealmObject {
     @PrimaryKey
     private String id;
     private String title, location, comment;
-    private User user;
-    private Date startDate, endDate;
+    private String userId;
+    private Date date;
     private RealmList<Tag> tags;
+    private String startTime,endTime;
+
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
     public Event() {
     }
@@ -54,28 +79,12 @@ public class Event extends RealmObject {
         this.comment = comment;
     }
 
-    public User getUser() {
-        return user;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
+    public void setUserId(String user) {
+        this.userId = user;
     }
 
     public RealmList<Tag> getTags() {

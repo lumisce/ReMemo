@@ -36,7 +36,7 @@ public class EventListFragment extends ListFragment {
 //        e.setTitle("New Event");
 //        e.setLocation("Quezon City");
 //        e.setStartDate(new Date());;
-        realm.commitTransaction();
+//        realm.commitTransaction();
         events = realm.where(Event.class)
                 .findAll();
     }

@@ -10,6 +10,24 @@ public class Image extends RealmObject {
     @PrimaryKey
     private String id;
     private String filename;
+    private String eventId;
+    private String memoId;
+
+    public String getEventId() {
+        return eventId;
+    }
+
+    public void setEventId(String eventId) {
+        this.eventId = eventId;
+    }
+
+    public String getMemoId() {
+        return memoId;
+    }
+
+    public void setMemoId(String memoId) {
+        this.memoId = memoId;
+    }
 
     public String getId() {
         return id;

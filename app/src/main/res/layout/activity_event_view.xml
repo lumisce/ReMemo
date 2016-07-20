@@ -171,7 +171,6 @@
         android:text="Create Event"
         android:id="@+id/btn_event_create"
         android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/et_event_comments"
-        android:onClick="createEvent"/>
+        android:layout_alignEnd="@+id/et_event_comments" />
 
 </RelativeLayout>

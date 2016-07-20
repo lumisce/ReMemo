@@ -1,6 +1,7 @@
 package cs1193.admu.finalproject;
 
 import android.content.Intent;
+import android.provider.Settings;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +19,11 @@ import android.view.View;
 import cs1193.admu.finalproject.model.Memo;
 
 public class MainActivity extends AppCompatActivity  implements MemoListFragment.OnMemoFragmentInteractionListener, EventListFragment.OnEventFragmentInteractionListener{
+
+    //Key for intent extra identifying if the input activity is an add or edit.
+    public static final String INPUTTYPE = "inputKey";
+    public static final String USERID = "userKey";
+
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -156,6 +162,15 @@ public class MainActivity extends AppCompatActivity  implements MemoListFragment
             }
             return null;
         }
+
+    }
+
+    public void newEvent(View v){
+
+        Intent i = new Intent(this,cs1193.admu.finalproject.EventInputActivity.class);
+        i.putExtra(MainActivity.INPUTTYPE,0);
+        i.putExtra(MainActivity.USERID,getIntent().getStringExtra(MainActivity.USERID));
+        startActivity(i);
 
     }
 }
