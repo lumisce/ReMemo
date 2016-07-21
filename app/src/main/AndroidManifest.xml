@@ -11,7 +11,7 @@
     <application
         android:name=".CustomApplication"
         android:allowBackup="false"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
@@ -34,7 +34,6 @@
         <activity android:name=".EventInputActivity" />
         <activity android:name=".ImageInputActivty" />
         <activity android:name=".EventViewActivity" />
-        <activity android:name=".ImageViewActivity" />
         <activity android:name=".MapInputActivity" />
 
     </application>
