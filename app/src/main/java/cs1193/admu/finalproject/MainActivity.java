@@ -1,7 +1,6 @@
 package cs1193.admu.finalproject;
 
 import android.content.Intent;
-import android.provider.Settings;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -21,7 +20,7 @@ import cs1193.admu.finalproject.model.Memo;
 public class MainActivity extends AppCompatActivity  implements MemoListFragment.OnMemoFragmentInteractionListener, EventListFragment.OnEventFragmentInteractionListener{
 
     //Key for intent extra identifying if the input activity is an add or edit.
-    public static final String INPUTTYPE = "inputKey";
+    public static final String INPUT_TYPE = "inputKey";
     public static final String USERID = "userKey";
 
 
@@ -166,7 +165,7 @@ public class MainActivity extends AppCompatActivity  implements MemoListFragment
     public void newEvent(View v) {
 
         Intent i = new Intent(this, EventInputActivity.class);
-        i.putExtra(MainActivity.INPUTTYPE,0);
+        i.putExtra(MainActivity.INPUT_TYPE,0);
         i.putExtra(MainActivity.USERID, getIntent().getStringExtra(MainActivity.USERID));
         startActivity(i);
 
@@ -175,7 +174,7 @@ public class MainActivity extends AppCompatActivity  implements MemoListFragment
     public void newMemo(View v) {
 
         Intent i = new Intent(this, MemoInputActivity.class);
-        i.putExtra(MainActivity.INPUTTYPE,0);
+        i.putExtra(MainActivity.INPUT_TYPE,0);
         i.putExtra(MainActivity.USERID, getIntent().getStringExtra(MainActivity.USERID));
         startActivity(i);
 

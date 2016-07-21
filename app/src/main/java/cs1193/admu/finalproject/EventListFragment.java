@@ -20,6 +20,8 @@ import io.realm.RealmList;
 
 public class EventListFragment extends ListFragment {
 
+    public static final String EVENT_ID = "eventIdKey";
+
     private OnEventFragmentInteractionListener mListener;
     private OrderedRealmCollection<Event> events = new RealmList<>();
     private EventListAdapter adapter;
@@ -46,8 +48,9 @@ public class EventListFragment extends ListFragment {
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
         // TODO: 7/16/16 start new Activity? ask acti to call new act
-        Intent i = new Intent(getActivity(), EventViewActivity.class);
-        i.putExtra("EVENT_ID", (String) v.getTag());
+        Intent i = new Intent(getActivity(), EventInputActivity.class);
+        i.putExtra(MainActivity.INPUT_TYPE,EventInputActivity.EDIT);
+        i.putExtra(EventListFragment.EVENT_ID, (String) v.getTag());
         startActivity(i);
     }
 
