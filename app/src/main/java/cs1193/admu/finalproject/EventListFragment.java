@@ -2,7 +2,9 @@ package cs1193.admu.finalproject;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,7 @@ import java.util.UUID;
 
 import cs1193.admu.finalproject.model.Event;
 import cs1193.admu.finalproject.model.Memo;
+import cs1193.admu.finalproject.model.User;
 import io.realm.OrderedRealmCollection;
 import io.realm.Realm;
 import io.realm.RealmList;
@@ -25,6 +28,8 @@ public class EventListFragment extends ListFragment {
     private OnEventFragmentInteractionListener mListener;
     private OrderedRealmCollection<Event> events = new RealmList<>();
     private EventListAdapter adapter;
+    private SharedPreferences prefs;
+    private User user;
 
     public EventListFragment() {
     }
@@ -32,16 +37,24 @@ public class EventListFragment extends ListFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
         Realm realm = Realm.getDefaultInstance();
-        // TODO: 7/16/16 where event is by user
-        realm.beginTransaction();
-        Event e = realm.createObject(Event.class, UUID.randomUUID().toString());
-        e.setTitle("New Event");
-        e.setLocation("Quezon City");
-        e.setDate(new Date());;
-        realm.commitTransaction();
-        events = realm.where(Event.class)
-                .findAll();
+        if (prefs.contains("id")) {
+            String id = prefs.getString("id", "");
+
+            realm.beginTransaction();
+            Event e = realm.createObject(Event.class, UUID.randomUUID().toString());
+            e.setTitle("New Event");
+            e.setUserId(id);
+            e.setLocation("Quezon City");
+            e.setDate(new Date());;
+            realm.commitTransaction();
+
+            events = realm.where(Event.class)
+                    .equalTo("userId", id)
+                    .findAll();
+        }
+
     }
 
     @Override

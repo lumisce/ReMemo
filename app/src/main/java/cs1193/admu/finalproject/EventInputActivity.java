@@ -125,4 +125,8 @@ public class EventInputActivity extends AppCompatActivity {
         d.show();
     }
 
+    public void setTags(View v) {
+        // TODO: 7/21/16 new TagInputDialog
+    }
+
 }
