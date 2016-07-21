@@ -149,7 +149,8 @@
         android:text="Pick"
         android:id="@+id/btn_event_location"
         android:layout_below="@+id/et_edit_event_time_to"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:onClick="newLocation"/>
 
     <TextView
         android:layout_width="wrap_content"

@@ -16,6 +16,7 @@ import android.widget.TimePicker;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Map;
 import java.util.UUID;
 
 import cs1193.admu.finalproject.model.Event;
@@ -173,6 +174,19 @@ public class EventInputActivity extends AppCompatActivity {
 
     }
 
+    public void newLocation(View v){
 
+        Intent i = new Intent(this, cs1193.admu.finalproject.MapInputActivity.class);
+        startActivityForResult(i,0);
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
+
+        EditText address = (EditText) findViewById(R.id.et_edit_event_location);
+        address.setText(prefs.getString(MapInputActivity.ADDRESS,""));
+    }
 }
