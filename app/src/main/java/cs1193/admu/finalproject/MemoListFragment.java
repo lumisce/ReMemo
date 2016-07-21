@@ -16,6 +16,8 @@ import io.realm.RealmList;
 
 public class MemoListFragment extends ListFragment {
 
+    public static final String MEMO_ID = "memoKey";
+
     private OnMemoFragmentInteractionListener mListener;
     private OrderedRealmCollection<Memo> memos = new RealmList<>();
     private MemoListAdapter adapter;
@@ -35,7 +37,10 @@ public class MemoListFragment extends ListFragment {
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
-        // TODO: 7/16/16 start new Activity? ask acti to call new act
+        Intent i = new Intent(getActivity(), MemoInputActivity.class);
+        i.putExtra(MemoListFragment.MEMO_ID, (String) v.getTag());
+        i.putExtra(MainActivity.INPUT_TYPE,MemoInputActivity.EDIT);
+        startActivity(i);
     }
 
     @Override

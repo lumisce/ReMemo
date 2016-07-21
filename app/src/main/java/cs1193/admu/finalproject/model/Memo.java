@@ -14,11 +14,26 @@ public class Memo extends RealmObject {
     private String id;
     private String title, content;
     private String userId;
-    private Date date;
+    private String date;
     private RealmList<Tag> tags;
-    private RealmList<Image> images;
 
     public Memo() {
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getTitle() {
@@ -35,14 +50,6 @@ public class Memo extends RealmObject {
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
     }
 
     public String getId() {
@@ -67,13 +74,5 @@ public class Memo extends RealmObject {
 
     public void setTags(RealmList<Tag> tags) {
         this.tags = tags;
-    }
-
-    public RealmList<Image> getImages() {
-        return images;
-    }
-
-    public void setImages(RealmList<Image> images) {
-        this.images = images;
     }
 }

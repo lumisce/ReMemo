@@ -14,7 +14,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Images"
-        android:id="@+id/btn_memo_imgs" />
+        android:id="@+id/btn_memo_imgs"
+        android:onClick="newImage"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -52,5 +53,15 @@
         android:text="Save"
         android:id="@+id/btn_memo_save"
         android:layout_alignTop="@+id/btn_memo_tags"
-        android:layout_alignEnd="@+id/et_memo_title" />
+        android:layout_alignEnd="@+id/et_memo_title"
+        android:onClick="newMemo"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        android:id="@+id/btn_memo_delete"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/btn_memo_save"
+        android:onClick="deleteMemo"/>
 </RelativeLayout>

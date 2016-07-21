@@ -34,11 +34,13 @@ public class ImageInputActivty extends AppCompatActivity {
         realm = Realm.getDefaultInstance();
         ListView lv = (ListView) findViewById(R.id.img_list);
         if(getIntent().getIntExtra(TYPE,0)== EVENT) {
-            System.out.println(realm.where(Image.class)
-                    .equalTo("eventId",getIntent().getStringExtra(EventListFragment.EVENT_ID))
-                    .findAll().size());
             lv.setAdapter(new ImageListAdapter(this, realm.where(Image.class)
                     .equalTo("eventId",getIntent().getStringExtra(EventListFragment.EVENT_ID))
+                    .findAll()));
+        }
+        else{
+            lv.setAdapter(new ImageListAdapter(this, realm.where(Image.class)
+                    .equalTo("memoId",getIntent().getStringExtra(MemoListFragment.MEMO_ID))
                     .findAll()));
         }
     }
@@ -135,7 +137,16 @@ public class ImageInputActivty extends AppCompatActivity {
             img.setFilename(outputFile.getAbsolutePath());
             img.setEventId(getIntent().getStringExtra(EventListFragment.EVENT_ID));
             realm.commitTransaction();
-            System.out.println("done");
+
+        }
+        else{
+
+            realm.beginTransaction();
+            Image img = realm.createObject(Image.class);
+            img.setId(UUID.randomUUID().toString());
+            img.setFilename(outputFile.getAbsolutePath());
+            img.setMemoId(getIntent().getStringExtra(MemoListFragment.MEMO_ID));
+            realm.commitTransaction();
 
         }
     }

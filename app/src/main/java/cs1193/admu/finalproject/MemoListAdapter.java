@@ -23,14 +23,14 @@ public class MemoListAdapter extends RealmBaseAdapter<Memo> implements ListAdapt
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View v = inflater.inflate(R.layout.fragment_event_row, parent, false);
+        View v = inflater.inflate(R.layout.fragment_memo_row, parent, false);
 
         TextView title = (TextView) v.findViewById(R.id.memo_title);
         TextView date = (TextView) v.findViewById(R.id.memo_date);
 
         title.setText(memos.get(position).getTitle());
-        date.setText(memos.get(position).getDate()+"");
-
+        date.setText(memos.get(position).getDate());
+        v.setTag(memos.get(position).getId());
         return v;
     }
 }
