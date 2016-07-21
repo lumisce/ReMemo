@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity  implements MemoListFragment
                 case 0:
                     return new EventListFragment().setUserId(getIntent().getStringExtra(MainActivity.USERID));
                 case 1:
-                    return new MemoListFragment();
+                    return new MemoListFragment().setUserId(getIntent().getStringExtra(MainActivity.USERID));
             }
             return null;
         }
