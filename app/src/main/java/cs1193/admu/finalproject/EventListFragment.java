@@ -25,23 +25,20 @@ public class EventListFragment extends ListFragment {
     private OnEventFragmentInteractionListener mListener;
     private OrderedRealmCollection<Event> events = new RealmList<>();
     private EventListAdapter adapter;
+    private String userId;
 
     public EventListFragment() {
+
+
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Realm realm = Realm.getDefaultInstance();
-        // TODO: 7/16/16 where event is by user
-        realm.beginTransaction();
-        Event e = realm.createObject(Event.class, UUID.randomUUID().toString());
-        e.setTitle("New Event");
-        e.setLocation("Quezon City");
-        e.setDate(new Date());;
-        realm.commitTransaction();
-        events = realm.where(Event.class)
-                .findAll();
+
+        events = realm.where(Event.class).equalTo("userId",userId).findAll();
     }
 
     @Override
@@ -52,6 +49,13 @@ public class EventListFragment extends ListFragment {
         i.putExtra(MainActivity.INPUT_TYPE,EventInputActivity.EDIT);
         i.putExtra(EventListFragment.EVENT_ID, (String) v.getTag());
         startActivity(i);
+    }
+
+    public EventListFragment setUserId(String id){
+
+        userId = id;
+        return this;
+
     }
 
 

@@ -74,8 +74,6 @@ public class LoginActivity extends AppCompatActivity {
 
         Intent i = new Intent(this, MainActivity.class);
         i.putExtra(MainActivity.USERID,u.getId());
-        realm.close();
-
         startActivity(i);
     }
 
