@@ -52,37 +52,24 @@ public class MainActivity extends AppCompatActivity  implements MemoListFragment
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
-        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-            }
-
-            @Override
-            public void onPageSelected(final int position) {
-                FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-                if (fab != null) {
-                    fab.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            switch (position) {
-                                case 0:
-                                    newEvent(v);
-                                    break;
-                                case 1:
-                                    newMemo(v);
-                                    break;
-                            }
-                        }
-                    });
-                }
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
         mViewPager.setAdapter(mSectionsPagerAdapter);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        if (fab != null) {
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    switch (mViewPager.getCurrentItem()) {
+                        case 0:
+                            newEvent(v);
+                            break;
+                        case 1:
+                            newMemo(v);
+                            break;
+                    }
+                }
+            });
+        }
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);

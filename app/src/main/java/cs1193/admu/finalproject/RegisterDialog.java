@@ -1,24 +1,16 @@
 package cs1193.admu.finalproject;
 
 import android.app.AlertDialog;
-import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.UUID;
 
 import cs1193.admu.finalproject.model.User;
@@ -60,8 +52,8 @@ public class RegisterDialog extends Dialog {
         etName = (EditText) findViewById(R.id.et_reg_name);
         etEmail = (EditText) findViewById(R.id.et_reg_email);
         etPassword = (EditText) findViewById(R.id.et_reg_password);
-        btnOk = (Button) findViewById(R.id.btn_ok);
-        btnCancel = (Button) findViewById(R.id.btn_cancel);
+        btnOk = (Button) findViewById(R.id.btn_tags_ok);
+        btnCancel = (Button) findViewById(R.id.btn_tags_cancel);
     }
 
     private void createAlert() {

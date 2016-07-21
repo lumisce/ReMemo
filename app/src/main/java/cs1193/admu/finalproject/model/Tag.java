@@ -11,6 +11,7 @@ public class Tag extends RealmObject {
     @PrimaryKey
     private String id;
     private String name;
+    private String userId;
     private RealmList<Event> events;
     private RealmList<Memo> memos;
 
@@ -31,6 +32,14 @@ public class Tag extends RealmObject {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public RealmList<Event> getEvents() {

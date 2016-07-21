@@ -150,6 +150,11 @@ public class EventInputActivity extends AppCompatActivity {
         d.show();
     }
 
+    public void setTags(View v) {
+        Dialog d = new TagInputDialog(this);
+        d.show();
+    }
+
     public void newImage(View v){
 
         Intent i = new Intent(this,cs1193.admu.finalproject.ImageInputActivty.class);
