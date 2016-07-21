@@ -1,5 +1,6 @@
 package cs1193.admu.finalproject;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
@@ -142,6 +143,14 @@ public class ImageInputActivty extends AppCompatActivity {
     public void close(View v){
 
         finish();
+
+    }
+
+    public void selectImage(View v){
+
+        Dialog d = new ImagePopupDialog(this)
+                .setImageId((String)v.getTag());
+        d.show();
 
     }
 }

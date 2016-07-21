@@ -180,6 +180,15 @@
             android:id="@+id/gridView"
             android:layout_below="@+id/et_view_event_comments"
             android:layout_alignParentStart="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delete Event"
+            android:id="@+id/btn_event_delete"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:onClick="delete"/>
     </RelativeLayout>
 
 

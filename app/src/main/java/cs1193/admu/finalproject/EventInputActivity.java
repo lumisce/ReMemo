@@ -54,6 +54,7 @@ public class EventInputActivity extends AppCompatActivity {
             Button createEvent = (Button) findViewById(R.id.btn_event_create);
 
 
+
             title.setText(curEvent.getTitle());
             date.setText(curEvent.getDate());
             timeFrom.setText(curEvent.getStartTime());
@@ -61,6 +62,14 @@ public class EventInputActivity extends AppCompatActivity {
             location.setText(curEvent.getLocation());
             comments.setText(curEvent.getComment());
             createEvent.setText("Save");
+
+        }
+        else{
+
+            Button img = (Button) findViewById(R.id.btn_event_image);
+            img.setEnabled(false);
+            Button tags = (Button) findViewById(R.id.btn_event_tags);
+            tags.setEnabled(false);
 
         }
     }
@@ -163,5 +172,7 @@ public class EventInputActivity extends AppCompatActivity {
         startActivity(i);
 
     }
+
+
 
 }

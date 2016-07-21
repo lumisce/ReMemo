@@ -69,6 +69,20 @@ public class EventViewActivity extends AppCompatActivity {
 
     }
 
+    public void delete(View v){
+
+        realm.beginTransaction();
+        Event.deleteFromRealm(realm.where(Event.class).equalTo("id",getIntent().getStringExtra(EventListFragment.EVENT_ID)).findFirst());
+        RealmResults<Image> imgs = realm.where(Image.class).equalTo("eventid",getIntent().getStringExtra(EventListFragment.EVENT_ID)).findAll();
+        for(Image img: imgs){
+
+            Image.deleteFromRealm(img);
+
+        }
+        realm.commitTransaction();
+        finish();
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

@@ -36,18 +36,20 @@ public class ImageListAdapter extends RealmBaseAdapter<Image> implements ListAda
 
     }
 
+
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         View v;
 
         if(i < adapterData.size()){
 
-            v = inflater.inflate(R.layout.image_grid_row,viewGroup,false);
+            v = inflater.inflate(R.layout.image_list_row,viewGroup,false);
 
-            ImageView img = (ImageView) v.findViewById(R.id.imageView);
+            ImageView img = (ImageView) v.findViewById(R.id.list_imageView);
             Image image = images.get(i);
 
             Picasso.with(context).load(new File(image.getFilename())).fit().into(img);
+            img.setTag(image.getId());
 
         }
         else{
