@@ -137,9 +137,9 @@ public class MainActivity extends AppCompatActivity  implements MemoListFragment
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return new EventListFragment();
+                    return new EventListFragment().setUserId(getIntent().getStringExtra(MainActivity.USERID));
                 case 1:
-                    return new MemoListFragment();
+                    return new MemoListFragment().setUserId(getIntent().getStringExtra(MainActivity.USERID));
             }
             return null;
         }

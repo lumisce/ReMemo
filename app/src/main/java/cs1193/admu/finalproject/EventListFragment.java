@@ -2,9 +2,7 @@ package cs1193.admu.finalproject;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +14,6 @@ import java.util.UUID;
 
 import cs1193.admu.finalproject.model.Event;
 import cs1193.admu.finalproject.model.Memo;
-import cs1193.admu.finalproject.model.User;
 import io.realm.OrderedRealmCollection;
 import io.realm.Realm;
 import io.realm.RealmList;
@@ -28,33 +25,20 @@ public class EventListFragment extends ListFragment {
     private OnEventFragmentInteractionListener mListener;
     private OrderedRealmCollection<Event> events = new RealmList<>();
     private EventListAdapter adapter;
-    private SharedPreferences prefs;
-    private User user;
+    private String userId;
 
     public EventListFragment() {
+
+
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
         Realm realm = Realm.getDefaultInstance();
-        if (prefs.contains("id")) {
-            String id = prefs.getString("id", "");
 
-            realm.beginTransaction();
-            Event e = realm.createObject(Event.class, UUID.randomUUID().toString());
-            e.setTitle("New Event");
-            e.setUserId(id);
-            e.setLocation("Quezon City");
-            e.setDate(new Date());;
-            realm.commitTransaction();
-
-            events = realm.where(Event.class)
-                    .equalTo("userId", id)
-                    .findAll();
-        }
-
+        events = realm.where(Event.class).equalTo("userId",userId).findAll();
     }
 
     @Override
@@ -65,6 +49,13 @@ public class EventListFragment extends ListFragment {
         i.putExtra(MainActivity.INPUT_TYPE,EventInputActivity.EDIT);
         i.putExtra(EventListFragment.EVENT_ID, (String) v.getTag());
         startActivity(i);
+    }
+
+    public EventListFragment setUserId(String id){
+
+        userId = id;
+        return this;
+
     }
 
 

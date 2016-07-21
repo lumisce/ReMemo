@@ -1,15 +1,18 @@
 package cs1193.admu.finalproject;
 
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.UUID;
 
 import cs1193.admu.finalproject.model.Event;
@@ -37,12 +40,12 @@ public class EventInputActivity extends AppCompatActivity {
             //There should only be one event in the list so .first() should be fine
             curEvent = realm.where(Event.class).equalTo("id",getIntent().getStringExtra(EventListFragment.EVENT_ID)).findAll().first();
 
-            EditText title = (EditText) findViewById(R.id.et_view_event_title);
-            EditText date = (EditText) findViewById(R.id.et_view_event_date);
-            EditText timeFrom = (EditText) findViewById(R.id.et_view_event_time);
-            EditText timeTo = (EditText) findViewById(R.id.et_view_event_time_to);
-            EditText location = (EditText) findViewById(R.id.et_view_event_location);
-            EditText comments = (EditText) findViewById(R.id.et_view_event_comments);
+            EditText title = (EditText) findViewById(R.id.et_edit_event_title);
+            EditText date = (EditText) findViewById(R.id.et_edit_event_date);
+            EditText timeFrom = (EditText) findViewById(R.id.et_edit_event_time);
+            EditText timeTo = (EditText) findViewById(R.id.et_edit_event_time_to);
+            EditText location = (EditText) findViewById(R.id.et_edit_event_location);
+            EditText comments = (EditText) findViewById(R.id.et_edit_event_comments);
             Button createEvent = (Button) findViewById(R.id.btn_event_create);
 
 
@@ -59,12 +62,12 @@ public class EventInputActivity extends AppCompatActivity {
 
     public void createEvent(View v){
 
-        EditText title = (EditText) findViewById(R.id.et_view_event_title);
-        EditText date = (EditText) findViewById(R.id.et_view_event_date);
-        EditText timeFrom = (EditText) findViewById(R.id.et_view_event_time);
-        EditText timeTo = (EditText) findViewById(R.id.et_view_event_time_to);
-        EditText location = (EditText) findViewById(R.id.et_view_event_location);
-        EditText comments = (EditText) findViewById(R.id.et_view_event_comments);
+        EditText title = (EditText) findViewById(R.id.et_edit_event_title);
+        EditText date = (EditText) findViewById(R.id.et_edit_event_date);
+        EditText timeFrom = (EditText) findViewById(R.id.et_edit_event_time);
+        EditText timeTo = (EditText) findViewById(R.id.et_edit_event_time_to);
+        EditText location = (EditText) findViewById(R.id.et_edit_event_location);
+        EditText comments = (EditText) findViewById(R.id.et_edit_event_comments);
 
         Realm realm = Realm.getDefaultInstance();
 
@@ -76,7 +79,7 @@ public class EventInputActivity extends AppCompatActivity {
             e.setId(UUID.randomUUID().toString());
             e.setUserId(getIntent().getStringExtra(MainActivity.USERID));
             e.setTitle(title.getText().toString());
-            e.setDate(new java.util.Date());
+            e.setDate(date.getText().toString());
             e.setStartTime(timeFrom.getText().toString());
             e.setEndTime(timeTo.getText().toString());
             e.setLocation(location.getText().toString());
@@ -90,8 +93,7 @@ public class EventInputActivity extends AppCompatActivity {
 
             realm.beginTransaction();
             curEvent.setTitle(title.getText().toString());
-            curEvent.setTitle(title.getText().toString());
-            curEvent.setDate(new java.util.Date());
+            curEvent.setDate(date.getText().toString());
             curEvent.setStartTime(timeFrom.getText().toString());
             curEvent.setEndTime(timeTo.getText().toString());
             curEvent.setLocation(location.getText().toString());
@@ -113,11 +115,11 @@ public class EventInputActivity extends AppCompatActivity {
             public void onTimeSet(TimePicker timePicker, int hour, int min) {
 
                 if(v1.getId() == R.id.btn_event_time_from) {
-                    EditText e = (EditText) findViewById(R.id.et_view_event_time);
+                    EditText e = (EditText) findViewById(R.id.et_edit_event_time);
                     e.setText(hour + ":" + min);
                 }
                 else{
-                    EditText e = (EditText) findViewById(R.id.et_view_event_time_to);
+                    EditText e = (EditText) findViewById(R.id.et_edit_event_time_to);
                     e.setText(hour + ":" + min);
                 }
             }
@@ -125,8 +127,21 @@ public class EventInputActivity extends AppCompatActivity {
         d.show();
     }
 
-    public void setTags(View v) {
-        // TODO: 7/21/16 new TagInputDialog
+    public void setDate(View v){
+
+        Calendar c = Calendar.getInstance();
+        Dialog d = new DatePickerDialog(this,new DatePickerDialog.OnDateSetListener(){
+
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+
+                String output = day+"/"+(month+1)+"/"+year;
+                EditText e = (EditText) findViewById(R.id.et_edit_event_date);
+                e.setText(output);
+
+            }
+        },c.get(Calendar.YEAR),c.get(Calendar.MONTH),c.get(Calendar.DAY_OF_MONTH));
+        d.show();
     }
 
 }

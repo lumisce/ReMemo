@@ -13,7 +13,7 @@ public class Memo extends RealmObject {
     @PrimaryKey
     private String id;
     private String title, content;
-    private User user;
+    private String userId;
     private Date date;
     private RealmList<Tag> tags;
     private RealmList<Image> images;
@@ -53,12 +53,12 @@ public class Memo extends RealmObject {
         this.id = id;
     }
 
-    public User getUser() {
-        return user;
+    public String getUser() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser(String user) {
+        this.userId = user;
     }
 
     public RealmList<Tag> getTags() {

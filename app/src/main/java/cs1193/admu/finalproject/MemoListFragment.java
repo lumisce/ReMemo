@@ -19,6 +19,7 @@ public class MemoListFragment extends ListFragment {
     private OnMemoFragmentInteractionListener mListener;
     private OrderedRealmCollection<Memo> memos = new RealmList<>();
     private MemoListAdapter adapter;
+    private String userId;
 
     public MemoListFragment() {
     }
@@ -27,8 +28,7 @@ public class MemoListFragment extends ListFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Realm realm = Realm.getDefaultInstance();
-        // TODO: 7/16/16 where memo is by user
-        memos = realm.where(Memo.class)
+        memos = realm.where(Memo.class).equalTo("userId",userId)
                 .findAll();
     }
 
@@ -71,5 +71,11 @@ public class MemoListFragment extends ListFragment {
     public interface OnMemoFragmentInteractionListener {
 
         void onMemoFragmentInteraction(Memo memo);
+    }
+
+    public MemoListFragment setUserId(String id){
+        userId = id;
+        return this;
+
     }
 }
