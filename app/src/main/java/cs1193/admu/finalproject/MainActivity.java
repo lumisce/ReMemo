@@ -166,7 +166,6 @@ public class MainActivity extends AppCompatActivity  implements MemoListFragment
 
         Intent i = new Intent(this, EventInputActivity.class);
         i.putExtra(MainActivity.INPUT_TYPE,0);
-        i.putExtra(MainActivity.USERID, getIntent().getStringExtra(MainActivity.USERID));
         startActivity(i);
 
     }
@@ -175,7 +174,6 @@ public class MainActivity extends AppCompatActivity  implements MemoListFragment
 
         Intent i = new Intent(this, MemoInputActivity.class);
         i.putExtra(MainActivity.INPUT_TYPE,0);
-        i.putExtra(MainActivity.USERID, getIntent().getStringExtra(MainActivity.USERID));
         startActivity(i);
 
     }
