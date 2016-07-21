@@ -144,4 +144,9 @@ public class EventInputActivity extends AppCompatActivity {
         d.show();
     }
 
+    public void setTags(View v) {
+        Dialog d = new TagInputDialog(this);
+        d.show();
+    }
+
 }
