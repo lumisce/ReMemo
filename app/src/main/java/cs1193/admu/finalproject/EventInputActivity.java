@@ -3,6 +3,9 @@ package cs1193.admu.finalproject;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -26,11 +29,13 @@ public class EventInputActivity extends AppCompatActivity {
     private int type;
     private Event curEvent;
     private Realm realm;
+    private SharedPreferences prefs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_input);
 
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
         realm = Realm.getDefaultInstance();
         type = getIntent().getIntExtra(MainActivity.INPUT_TYPE,EventInputActivity.ADD);
 
@@ -50,12 +55,12 @@ public class EventInputActivity extends AppCompatActivity {
 
 
             title.setText(curEvent.getTitle());
-            date.setText(curEvent.getDate().toString());
+            date.setText(curEvent.getDate());
             timeFrom.setText(curEvent.getStartTime());
             timeTo.setText(curEvent.getEndTime());
             location.setText(curEvent.getLocation());
             comments.setText(curEvent.getComment());
-            createEvent.setText("Edit Event");
+            createEvent.setText("Save");
 
         }
     }
@@ -70,6 +75,7 @@ public class EventInputActivity extends AppCompatActivity {
         EditText comments = (EditText) findViewById(R.id.et_edit_event_comments);
 
         Realm realm = Realm.getDefaultInstance();
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
         if(type == EventInputActivity.ADD){
 
@@ -77,7 +83,7 @@ public class EventInputActivity extends AppCompatActivity {
             Event e = realm.createObject(Event.class);
 
             e.setId(UUID.randomUUID().toString());
-            e.setUserId(getIntent().getStringExtra(MainActivity.USERID));
+            e.setUserId(prefs.getString("id",""));
             e.setTitle(title.getText().toString());
             e.setDate(date.getText().toString());
             e.setStartTime(timeFrom.getText().toString());
@@ -147,6 +153,15 @@ public class EventInputActivity extends AppCompatActivity {
     public void setTags(View v) {
         Dialog d = new TagInputDialog(this);
         d.show();
+    }
+
+    public void newImage(View v){
+
+        Intent i = new Intent(this,cs1193.admu.finalproject.ImageInputActivty.class);
+        i.putExtra(EventListFragment.EVENT_ID,getIntent().getStringExtra(EventListFragment.EVENT_ID));
+        i.putExtra(ImageInputActivty.TYPE,ImageInputActivty.EVENT);
+        startActivity(i);
+
     }
 
 }
