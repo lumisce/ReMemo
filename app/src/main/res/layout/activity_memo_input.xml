@@ -17,15 +17,6 @@
         android:id="@+id/btn_memo_imgs"
         android:onClick="newImage"/>
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tags"
-        android:id="@+id/btn_memo_tags"
-        android:layout_alignTop="@+id/btn_memo_imgs"
-        android:layout_toEndOf="@+id/btn_memo_imgs" />
-
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -52,9 +43,9 @@
         android:layout_height="wrap_content"
         android:text="Save"
         android:id="@+id/btn_memo_save"
-        android:layout_alignTop="@+id/btn_memo_tags"
         android:layout_alignEnd="@+id/et_memo_title"
-        android:onClick="newMemo"/>
+        android:onClick="newMemo"
+        android:layout_alignTop="@+id/btn_memo_imgs" />
 
     <Button
         android:layout_width="wrap_content"

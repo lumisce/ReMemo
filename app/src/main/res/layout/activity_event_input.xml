@@ -19,16 +19,6 @@
         android:layout_alignParentStart="true"
         android:onClick="newImage"/>
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tags"
-        android:id="@+id/btn_event_tags"
-        android:layout_alignBottom="@+id/btn_event_image"
-        android:layout_toEndOf="@+id/btn_event_image"
-        android:onClick="setTags"/>
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
